@@ -74,7 +74,10 @@ export class ImageUpload {
 
 			if (url) {
 				const fd = new FormData();
+                const key = "quill-files/" + file["name"]
 
+                fd.append("key", key);
+                fd.append("success_action_status", "201");
 				fd.append(name, file);
 
 				if (this.options.csrf) {
@@ -92,8 +95,14 @@ export class ImageUpload {
 
 				// listen callback
 				xhr.onload = () => {
-					if (xhr.status === 200) {
-						callbackOK(JSON.parse(xhr.responseText), this.insert.bind(this));
+					if (xhr.status === 201) {
+                        //Needs to be XML parse for S3
+                        const parseString = require('xml2js').parseString;
+                        const xml = xhr.responseText;
+                        parseString(xml, (err, result) => {
+                            const {"PostResponse": {Location}} = result;
+						    callbackOK(Location[0], this.insert.bind(this));
+                        })
 					} else {
 						callbackKO({
 							code: xhr.status,
