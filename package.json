@@ -1,6 +1,6 @@
 {
 	"name": "s3-quill-image-upload",
-	"version": "0.1.3",
+	"version": "0.1.4",
 	"description": "A module for Quill rich text editor to upload images to be selected from toolbar editor. Forked from https://github.com/fxmontigny/quill-image-upload. This version of the module directly integrates with S3. Still Experimental.",
 	"main": "index.js",
 	"scripts": {

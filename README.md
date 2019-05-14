@@ -1,6 +1,6 @@
 # Quill ImageUpload Module
 
-A module for Quill rich text editor to upload images to be selected from toolbar editor. This is a fork of [https://github.com/fxmontigny/quill-image-upload] and supports AWS S3 integration. Image files are saved to <your-s3-bucket>/quill-images. 
+A module for Quill rich text editor to upload images to be selected from toolbar editor. This is a fork of https://github.com/fxmontigny/quill-image-upload and supports AWS S3 integration. Image files are saved to your-s3-bucket/quill-images. 
 
 ## Usage
 
@@ -17,7 +17,7 @@ const quill = new Quill(editor, {
 	modules: {
 		// ...
 		imageUpload: {
-			url: '', // server url. If the url is empty then the base64 returns
+			url: '', // AWS Cloudfront URL.
 			method: 'POST', // change query method, default 'POST'
 			name: 'file', // custom form name
 			withCredentials: false, // withCredentials
